@@ -27,6 +27,7 @@ class ValidationChecker {
       required: {
         key: 'validate.required',
         method: 'validateRequired',
+        hasLabel: true,
         message(component) {
           return component.t(component.errorMessage('required'), {
             field: component.errorLabel,
@@ -49,6 +50,7 @@ class ValidationChecker {
       },
       unique: {
         key: 'validate.unique',
+        hasLabel: true,
         message(component) {
           return component.t(component.errorMessage('unique'), {
             field: component.errorLabel,
@@ -125,6 +127,7 @@ class ValidationChecker {
       },
       multiple: {
         key: 'validate.multiple',
+        hasLabel: true,
         message(component) {
           const shouldBeArray = boolValue(component.component.multiple) || Array.isArray(component.emptyValue);
           const isRequired = component.component.validate.required;
@@ -162,6 +165,7 @@ class ValidationChecker {
       },
       select: {
         key: 'validate.select',
+        hasLabel: true,
         message(component) {
           return component.t(component.errorMessage('select'), {
             field: component.errorLabel,
@@ -270,6 +274,7 @@ class ValidationChecker {
       },
       min: {
         key: 'validate.min',
+        hasLabel: true,
         message(component, setting) {
           return component.t(component.errorMessage('min'), {
             field: component.errorLabel,
@@ -290,6 +295,7 @@ class ValidationChecker {
       },
       max: {
         key: 'validate.max',
+        hasLabel: true,
         message(component, setting) {
           return component.t(component.errorMessage('max'), {
             field: component.errorLabel,
@@ -362,6 +368,7 @@ class ValidationChecker {
       },
       minLength: {
         key: 'validate.minLength',
+        hasLabel: true,
         message(component, setting) {
           return component.t(component.errorMessage('minLength'), {
             field: component.errorLabel,
@@ -379,6 +386,7 @@ class ValidationChecker {
       },
       maxLength: {
         key: 'validate.maxLength',
+        hasLabel: true,
         message(component, setting) {
           return component.t(component.errorMessage('maxLength'), {
             field: component.errorLabel,
@@ -396,6 +404,7 @@ class ValidationChecker {
       },
       maxWords: {
         key: 'validate.maxWords',
+        hasLabel: true,
         message(component, setting) {
           return component.t(component.errorMessage('maxWords'), {
             field: component.errorLabel,
@@ -413,6 +422,7 @@ class ValidationChecker {
       },
       minWords: {
         key: 'validate.minWords',
+        hasLabel: true,
         message(component, setting) {
           return component.t(component.errorMessage('minWords'), {
             field: component.errorLabel,
@@ -429,6 +439,7 @@ class ValidationChecker {
         }
       },
       email: {
+        hasLabel: true,
         message(component) {
           return component.t(component.errorMessage('invalid_email'), {
             field: component.errorLabel,
@@ -446,6 +457,7 @@ class ValidationChecker {
         }
       },
       url: {
+        hasLabel: true,
         message(component) {
           return component.t(component.errorMessage('invalid_url'), {
             field: component.errorLabel,
@@ -463,6 +475,7 @@ class ValidationChecker {
         }
       },
       date: {
+        hasLabel: true,
         message(component) {
           return component.t(component.errorMessage('invalid_date'), {
             field: component.errorLabel,
@@ -474,6 +487,7 @@ class ValidationChecker {
         }
       },
       day: {
+        hasLabel: true,
         message(component) {
           return component.t(component.errorMessage('invalid_day'), {
             field: component.errorLabel,
@@ -532,6 +546,7 @@ class ValidationChecker {
       },
       pattern: {
         key: 'validate.pattern',
+        hasLabel: true,
         message(component, setting) {
           return component.t(_.get(component, 'component.validate.patternMessage', component.errorMessage('pattern'), {
             field: component.errorLabel,
@@ -570,6 +585,7 @@ class ValidationChecker {
       },
       mask: {
         key: 'inputMask',
+        hasLabel: true,
         message(component) {
           return component.t(component.errorMessage('mask'), {
             field: component.errorLabel,
@@ -601,6 +617,7 @@ class ValidationChecker {
       },
       custom: {
         key: 'validate.custom',
+        hasLabel: true,
         message(component) {
           return component.t(component.errorMessage('custom'), {
             field: component.errorLabel,
@@ -626,6 +643,7 @@ class ValidationChecker {
       },
       maxDate: {
         key: 'maxDate',
+        hasLabel: true,
         message(component, setting) {
           const date = getDateSetting(setting);
           return component.t(component.errorMessage('maxDate'), {
@@ -653,6 +671,7 @@ class ValidationChecker {
       },
       minDate: {
         key: 'minDate',
+        hasLabel: true,
         message(component, setting) {
           const date = getDateSetting(setting);
           return component.t(component.errorMessage('minDate'), {
@@ -679,6 +698,7 @@ class ValidationChecker {
       },
       minYear: {
         key: 'minYear',
+        hasLabel: true,
         message(component, setting) {
           return component.t(component.errorMessage('minYear'), {
             field: component.errorLabel,
@@ -699,6 +719,7 @@ class ValidationChecker {
       },
       maxYear: {
         key: 'maxYear',
+        hasLabel: true,
         message(component, setting) {
           return component.t(component.errorMessage('maxYear'), {
             field: component.errorLabel,
@@ -720,6 +741,7 @@ class ValidationChecker {
       calendar: {
         key: 'validate.calendar',
         messageText: '',
+        hasLabel: true,
         message(component) {
           return component.t(component.errorMessage(this.validators.calendar.messageText), {
             field: component.errorLabel,
@@ -764,6 +786,7 @@ class ValidationChecker {
       time: {
         key: 'validate.time',
         messageText: 'Invalid time',
+        hasLabel: true,
         message(component) {
           return component.t(component.errorMessage(this.validators.time.messageText), {
             field: component.errorLabel
@@ -825,6 +848,7 @@ class ValidationChecker {
         path: getArrayFromComponentPath(component.path || ''),
         context: {
           validator: validatorName,
+          hasLabel: validator.hasLabel,
           setting,
           key: component.key,
           label: component.label,
